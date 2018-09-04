@@ -13,10 +13,10 @@ describe('Park', function() {
   beforeEach(function () {
     dinosaur1 = new Dinosaur('t-rex', 'carnivore', 50);
     dinosaur2 = new Dinosaur('Triceratops', 'herbivore', 30);
-    dinosaur3 = new Dinosaur('Bronchisaurus', 'herbivore', 20);
-    dinosaur4 = new Dinosaur('Bronchisaurus', 'herbivore', 10);
+    dinosaur3 = new Dinosaur('Brontosaurus', 'herbivore', 20);
+    dinosaur4 = new Dinosaur('Brontosaurus', 'herbivore', 10);
 
-    dinos = [dinosaur1, dinosaur2, dinosaur3]
+    dinos = [dinosaur2, dinosaur1, dinosaur3]
 
     park = new Park('Jurassic Park', 10, dinos)
   })
@@ -49,18 +49,35 @@ describe('Park', function() {
   });
 
   it('should be able to find the dinosaur that attracts the most visitors', function() {
-
+    const actual = park.findPopularDinosaur();
+    assert.strictEqual(actual, dinosaur1);
   });
 
-  // it('should be able to find all dinosaurs of a particular species', function() {
-  //   const acutal = park.findDinosaursOfSpecies('Bronchisaurus');
-  //   assert.strictEqual(actual, (dinosaur3, dinosaur4));
-  // });
+  it('should be able to find all dinosaurs of a particular species', function() {
+    park.addDinosaur(dinosaur4);
+    const actual = park.findDinosaursOfSpecies('Brontosaurus');
+    assert.deepEqual(actual, [dinosaur3, dinosaur4]);
+  });
 
   it('should be able to remove all dinosaurs of a particular species', function() {
     park.removeAllDinosaurs();
     const actual = park.collection.length;
     assert.strictEqual(actual, 0);
+  });
+
+  it('should be able to calculate the visitors per day', function() {
+    const actual = park.visitorsPerDay();
+    assert.strictEqual(actual, 100);
+  });
+
+  it('should be able to calculate the visitors per year', function() {
+    const actual = park.visitorsPerYear();
+    assert.strictEqual(actual, 36500);
+  });
+
+  it('should be able to calculate the revenue from ticket sales per year', function() {
+    const actual = park.revenuePerYear();
+    assert.strictEqual(actual, 365000);
   });
 
 });
