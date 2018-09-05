@@ -27,7 +27,7 @@ Park.prototype.findPopularDinosaur = function () {
 
 Park.prototype.findDinosaursOfSpecies = function (speciesSearch) {
   const foundDinosaurs = [];
-  for ( var dinosaur of this.collection ) {
+  for ( const dinosaur of this.collection ) {
     if (dinosaur.species === speciesSearch) {
       foundDinosaurs.push(dinosaur);
     }
@@ -37,7 +37,7 @@ Park.prototype.findDinosaursOfSpecies = function (speciesSearch) {
 
 Park.prototype.visitorsPerDay = function () {
   let visitors = 0;
-  for ( var dinosaur of this.collection ) {
+  for ( const dinosaur of this.collection ) {
     (visitors += dinosaur.guestsAttractedPerDay)
   }
   return visitors;
