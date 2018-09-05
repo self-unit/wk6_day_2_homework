@@ -5,6 +5,7 @@ const Dinosaur = require('../models/dinosaur.js');
 describe('Park', function() {
 
   let park;
+  let dinos;
   let dinosaur1;
   let dinosaur2;
   let dinosaur3;
